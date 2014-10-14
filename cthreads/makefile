@@ -1,4 +1,4 @@
-CC = gcc -lpthread
+CC = gcc -pthread
 OBJ = lab2.o
 BIN = lab2
 
