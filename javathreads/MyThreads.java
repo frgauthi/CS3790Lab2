@@ -22,23 +22,25 @@ static int threadCount = 0;
         //bounds for the interval 
 	private int upper;
         private int lower;
+	private int thread;
         
         //constructor
-         public printPrimes(int lower, int upper){
+         public printPrimes(int lower, int upper, int thread){
              this.upper = upper;
              this.lower = lower;
+	     this.thread = thread;
          }
          // print the primes between upper and lower
          public void run(){
 	        
-		threadCount++;
-		System.out.print("Thread " + threadCount + " found: ");
+		
+		//System.out.print("Thread " + thread + " found: ");
              
 		for(int i = lower;i<upper;i++){
-                    if (isPrime(i)) System.out.print(" " +  i +  " ");
+                    if (isPrime(i)) System.out.print("Thread #" + (thread+1) +  " found: " + i + "\n");
                 }
 		
-		System.out.println();
+		
 		
          }
         
@@ -65,17 +67,19 @@ static int threadCount = 0;
         
         for(int i = 0; i<numThreads; i++)
         {   
-            
             //create threads, start and join them
-            thrd[i] = (new Thread (new printPrimes (start,start+intervalSize)) );
+            thrd[i] = (new Thread (new printPrimes (start, start+intervalSize, i)) );
             start += intervalSize;
-            thrd[i].start();
-        
-            try{
-            thrd[i].join();
-            }catch(InterruptedException ie){}
-        
-            
+            thrd[i].start();                   
         }
+
+	// join each thread after creating them	
+	for (int i =0; i<numThreads; i++){
+		
+		try{
+			thrd[i].join();
+		} catch(InterruptedException ie){}
+	
+	}
     }
 }

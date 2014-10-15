@@ -1,6 +1,6 @@
 CC = gcc -pthread
-OBJ = lab2.o
-BIN = lab2
+OBJ = cthreads.o
+BIN = cthreads
 
 $(BIN): $(OBJ)
 	$(CC) $(OBJ) -o $(BIN)

@@ -6,7 +6,6 @@ This program is intended to use threads to find the primes up to a certain numbe
 
 For example to find the primes from 1 to 15 with 3 threads would have each thread check intervals of 5.
 
-./cthreads 15 3  	in the console will compute the primes up to 15 using 3 threads
+**Refer to the Readme in the cthreads directory or javathreads directory for information on using each program specifically**
 
-
-type make in the cthreads directory to make the program and then use ./lab2 <max num> <num threads> to run the program
+*This program only handles a number of threads that evenly divide the maximum number you wish to find primes up to.
