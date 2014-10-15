@@ -9,6 +9,4 @@ For example to find the primes from 1 to 15 with 3 threads would have each threa
 ./lab2 15 3  	in the console will compute the primes up to 15 using 3 threads
 
 
-type make in the CS3790Lab2 directory to make the program
-
-and then use ./lab2 <max num> <num threads> to run the program
+type make in the cthreads directory to make the program and then use ./lab2 <max num> <num threads> to run the program

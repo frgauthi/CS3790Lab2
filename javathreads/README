@@ -1,0 +1,14 @@
+Author: Frankie Gauthier
+
+CS3790 Lab2 Assignment
+
+This program is intended to use threads to find the primes up to a certain number by dividing the range by the number of threads created.
+
+For example to find the primes from 1 to 15 with 3 threads would have each thread check intervals of 5.
+
+java MyThreads 15 3  	in the console will compute the primes up to 15 using 3 threads
+
+
+type "make" in the javathreads directory to make the program and then use java MyThreads <max num> <num threads> to  run the program
+
+*This program only handles a number of threads that evenly divide the maximum number you wish to find primes up to.

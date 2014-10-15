@@ -1,8 +1,12 @@
+import java.lang.String;
+
 
 
 public class MyThreads {
+
+static int threadCount = 0;    
     
-    
+    // function recieves and int and returns a boolean true if the value is prime otherwise false
     public static boolean isPrime(int num){
         if(num == 1) return false;
         if (num == 2) return true;
@@ -12,9 +16,11 @@ public class MyThreads {
         
         return true;
     }
-    
+  
+  
     static class printPrimes implements Runnable{
-        private int upper;
+        //bounds for the interval 
+	private int upper;
         private int lower;
         
         //constructor
@@ -22,19 +28,27 @@ public class MyThreads {
              this.upper = upper;
              this.lower = lower;
          }
-         
+         // print the primes between upper and lower
          public void run(){
-                
-             for(int i = lower;i<upper;i++){
-                    if (isPrime(i)) System.out.print(" "+i+" ");
+	        
+		threadCount++;
+		System.out.print("Thread " + threadCount + " found: ");
+             
+		for(int i = lower;i<upper;i++){
+                    if (isPrime(i)) System.out.print(" " +  i +  " ");
                 }
+		
+		System.out.println();
+		
          }
         
     }
+
     
     public static void main(String[] args){
     
-        //determine the amount of threads and max number
+	
+        //determine the amount of threads and max number from first 2 arguments
         int numThreads, maxNum, start, intervalSize;
         maxNum =  Integer.parseInt(args[0]);
         numThreads= Integer.parseInt(args[1]);
@@ -43,7 +57,6 @@ public class MyThreads {
         intervalSize = maxNum/numThreads;
         start = 1;
         
-        int[][] interval = new int[numThreads][2];
         
         // create thread array
         Thread thrd[] = new Thread[numThreads];
@@ -53,7 +66,6 @@ public class MyThreads {
         for(int i = 0; i<numThreads; i++)
         {   
             
-           
             //create threads, start and join them
             thrd[i] = (new Thread (new printPrimes (start,start+intervalSize)) );
             start += intervalSize;
